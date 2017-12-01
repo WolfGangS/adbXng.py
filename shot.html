@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		p{
+			position:absolute;
+			top: 95vh;
+			right: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("body").on("mousemove",function(e){
+				$("#mousepos").text("{" + e.pageX + ", " + e.pageY + "}");
+			});
+		});
+		window.setInterval(function(){
+			$("#shot")[0].src = "__shot.png?" + Date.now();
+		},1000);
+	</script>
+</head>
+<body>
+<img id="shot" src="__shot.png"><p id="mousepos"></p>
+</body>
+</html>

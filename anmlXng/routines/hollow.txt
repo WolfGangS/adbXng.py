@@ -1,0 +1,30 @@
+tap 1010 1730 #Peach Tree
+tap 470 1500  #Peach 1
+tap 750 1600  #Peach 2
+tap 840 1300  #Peach 3
+
+tap 900 850   #Cherry Tree
+tap 370 1300  #Cherry 1
+tap 600 1400  #Cherry 2
+tap 800 1300  #Cherry 3
+
+tap 720 630   #Apple Tree
+tap 330 1280  #Apple 1
+tap 570 1380  #Apple 2
+tap 780 1280  #Apple 3
+
+tap 800 1700  #Move
+tap 540 1700  #Move
+
+tap 810 1550  #Orange Tree
+tap 480 1500  #Orange 1
+tap 750 1600  #Orange 2
+tap 850 1300  #Orange 3
+
+tap 1050 1450 #Move
+tap 1050 1450 #Move
+
+tap 770 1440  #Pear Tree
+tap 500 1500  #Pear 1
+tap 750 1600  #Pear 2
+tap 830 1300  #Pear 3
