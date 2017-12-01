@@ -1,10 +1,11 @@
 import subprocess
 import time
-from Util.adb import ADB_Input
+from Util.adb import ADB
 
 
 class TouchPoint:
-    def __init__(self, x, y, sleep = 1):
+
+    def __init__(self, x, y, sleep=1):
         self.x = x
         self.y = y
         self.sleep = sleep
@@ -13,6 +14,6 @@ class TouchPoint:
         return TouchPoint(self.x + point.x, self.y + point.y)
 
     def touch(self):
-        print("tap: {} {}".format(self.x,self.y))
-        ADB_Input.tap(self.x,self.y)
+        print("tap: {} {}".format(self.x, self.y))
+        ADB.Input.tap(self.x, self.y)
         time.sleep(self.sleep)

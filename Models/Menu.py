@@ -1,4 +1,5 @@
 class Menu(object):
+
     def __init__(self, name, open_point, close_point, parent):
         self.openPoint = open_point
         if close_point is None:
@@ -44,7 +45,7 @@ class Menu(object):
             self.opened = False
 
     def getPath(self):
-        path = [];
+        path = []
         if self.parent is not None:
             path = self.parent.getPath()
         if self.name is not None:
@@ -52,10 +53,9 @@ class Menu(object):
         return path
 
 
-
-
 class ButtonMenu(object):
-    def __init__(self, name, point,parent):
+
+    def __init__(self, name, point, parent):
         self.point = point
         self.opened = False
         self.menu = None
@@ -63,7 +63,7 @@ class ButtonMenu(object):
         self.parent = parent
         self.name = name
 
-    def open(self,child = None):
+    def open(self, child=None):
         if not self.opened:
             if self.point is not None:
                 self.point.touch()
@@ -79,14 +79,13 @@ class ButtonMenu(object):
 
             self.opened = False
 
-
     def reset(self):
         self.opened = False
         if self.menu is not None:
             self.menu.reset()
 
     def getPath(self):
-        path = [];
+        path = []
         if self.parent is not None:
             path = self.parent.getPath()
         if self.name is not None:
@@ -95,7 +94,8 @@ class ButtonMenu(object):
 
 
 class MenuButton(object):
-    def __init__(self,name,point,parent):
+
+    def __init__(self, name, point, parent):
         self.point = point
         self.parent = parent
         self.name = name
@@ -103,14 +103,14 @@ class MenuButton(object):
     def reset(self):
         return
 
-    def open(self,child):
+    def open(self, child):
         self.point.touch()
 
-    def close(self,child):
+    def close(self, child):
         return
 
     def getPath(self):
-        path = [];
+        path = []
         if self.parent is not None:
             path = self.parent.getPath()
         if self.name is not None:
