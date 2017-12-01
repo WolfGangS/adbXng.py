@@ -1,34 +1,56 @@
-from Models.Menu import Menu
-from Models.TouchPoint import TouchPoint
+from anmlXng.xMenu import MainMenu
 import time
+from Models.Routine import Routine
 
 
-def add_map_menu(map, name, point):
-    map.add_sub_menu(name, point)
-    menu = map.subMenu[name]
-    menu.add_sub_menu("back", TouchPoint(300, 1550))
-    menu.add_sub_menu("go", TouchPoint(800, 1550))
+class ANMLXNG(object):
+    mappings = {}
+    mapLocations = ["shore","creek","ok","market","hollow","island","camp"];
+    for loc in mapLocations:
+    	mappings["loc:" + loc] = ["map",loc,"go"]
+
+    menu = MainMenu()
+    def addMapping(tag,path):
+        ANMLXNG.mappings[tag] = path
+
+    def tagClick(tag):
+        if tag in ANMLXNG.mappings.keys():
+            ANMLXNG.menu.open(ANMLXNG.mappings[tag])
+            return ANMLXNG.mappings[tag];
+
+ANMLXNG.tagClick("loc:hollow")
+
+ANMLXNG.menu.reset();
+
+r = Routine()
+
+route = [[1010,1730],2,
+[470,1500],2,
+[750,1600],2,
+[840,1300],2,
+[900,850],2,
+[370,1300],2,
+[600,1400],2,
+[800,1300],2,
+[720,630],2,
+[330,1280],2,
+[570,1380],2,
+[780,1280],2,
+[800,1700],2,
+[540,1700],2,
+[810,1550],2,
+[480,1500],2,
+[750,1600],2,
+[850,1300],2,
+[1050,1450],2,
+[1050,1450],2,
+[770,1440],2,
+[500,1500],2,
+[750,1600],2,
+[830,1300],2]
+
+r.tap(route)
+
+print("DONE")
 
 
-mainMenu = Menu("main")
-
-mainMenu.add_sub_menu("social", TouchPoint(1000, 200), TouchPoint(400, 200))  # type: Menu
-social = mainMenu.subMenu["social"]  # type: Menu
-social.add_sub_menu("mail", TouchPoint(980, 200), TouchPoint(180, 1650))
-social.add_sub_menu("friends", TouchPoint(830, 200), TouchPoint(180, 1650))
-social.add_sub_menu("market", TouchPoint(680, 200), TouchPoint(180, 1650))
-social.add_sub_menu("notices", TouchPoint(530, 200), TouchPoint(180, 1650))
-
-mainMenu.add_sub_menu("map", TouchPoint(540, 1840))
-
-map = mainMenu.subMenu["map"]  # type: Menu
-
-add_map_menu(map, "creek", TouchPoint(185, 1030))
-add_map_menu(map, "ok", TouchPoint(860, 1030))
-add_map_menu(map, "market", TouchPoint(330, 1250))
-add_map_menu(map, "hollow", TouchPoint(930, 1300))
-add_map_menu(map, "island", TouchPoint(250, 1550))
-add_map_menu(map, "shore", TouchPoint(800, 1630))
-
-mainMenu.open(["map", "shore", "go"])
-mainMenu.reset()

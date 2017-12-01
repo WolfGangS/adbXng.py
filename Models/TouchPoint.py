@@ -1,20 +1,18 @@
 import subprocess
 import time
+from Util.adb import ADB_Input
 
 
 class TouchPoint:
-    x = 0
-    y = 0
-
-    def __init__(self, x, y):
+    def __init__(self, x, y, sleep = 1):
         self.x = x
         self.y = y
+        self.sleep = sleep
 
     def offset(self, point):
         return TouchPoint(self.x + point.x, self.y + point.y)
 
     def touch(self):
-        cmd = "adb shell input tap {} {}".format(self.x, self.y)
-        print("Executing: " + cmd)
-        subprocess.check_output(cmd)
-        time.sleep(1)
+        print("tap: {} {}".format(self.x,self.y))
+        ADB_Input.tap(self.x,self.y)
+        time.sleep(self.sleep)
